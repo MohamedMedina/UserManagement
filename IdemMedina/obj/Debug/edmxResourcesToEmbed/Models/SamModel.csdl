@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SAM_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CardType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RequestDetails" Relationship="Self.FK_CardTypeID_RequestDetail" FromRole="CardType" ToRole="RequestDetail" />
+  </EntityType>
+  <EntityType Name="CardValidity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Function">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="route" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="GroupFunctions" Relationship="Self.FK_FunctionID_GroupFunction" FromRole="Function" ToRole="GroupFunction" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="GroupFunctions" Relationship="Self.FK_GroupID_GroupFunction" FromRole="Group" ToRole="GroupFunction" />
+    <NavigationProperty Name="UserGroups" Relationship="Self.FK_GroupID_UserGroup" FromRole="Group" ToRole="UserGroup" />
+  </EntityType>
+  <EntityType Name="GroupFunction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="functionId" Type="Int32" />
+    <Property Name="groupId" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <NavigationProperty Name="Function" Relationship="Self.FK_FunctionID_GroupFunction" FromRole="GroupFunction" ToRole="Function" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_GroupID_GroupFunction" FromRole="GroupFunction" ToRole="Group" />
+  </EntityType>
+  <EntityType Name="RejectReason">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RejectionReasonID_Request" FromRole="RejectReason" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="RequestClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RequestClassID_Request" FromRole="RequestClass" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="RequestPriority">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RequestPriorityID_Request" FromRole="RequestPriority" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="RequestStatu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RequestStatusID_Request" FromRole="RequestStatus" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="RequestType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RequestTypeID_Request" FromRole="RequestType" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="createDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_ApprovalUserID_Request" FromRole="User" ToRole="Request" />
+    <NavigationProperty Name="Requests1" Relationship="Self.FK_CreationUserID_Request" FromRole="User" ToRole="Request" />
+    <NavigationProperty Name="Requests2" Relationship="Self.FK_ReceiveUserID_Request" FromRole="User" ToRole="Request" />
+    <NavigationProperty Name="Requests3" Relationship="Self.FK_RejectionUserID_Request" FromRole="User" ToRole="Request" />
+    <NavigationProperty Name="UserGroups" Relationship="Self.FK_UserID_UserGroup" FromRole="User" ToRole="UserGroup" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="groupId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Group" Relationship="Self.FK_GroupID_UserGroup" FromRole="UserGroup" ToRole="Group" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserID_UserGroup" FromRole="UserGroup" ToRole="User" />
+  </EntityType>
+  <EntityType Name="WorkField">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_WorkFieldId_Customer" FromRole="WorkField" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="nameAr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="workFieldId" Type="Int32" />
+    <NavigationProperty Name="WorkField" Relationship="Self.FK_WorkFieldId_Customer" FromRole="Customer" ToRole="WorkField" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_CustomerID_Request" FromRole="Customer" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="requestNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="totalQuantity" Type="Int32" />
+    <Property Name="PDD" Type="DateTime" Precision="3" />
+    <Property Name="customerID" Type="Int32" />
+    <Property Name="creationDate" Type="DateTime" Precision="3" />
+    <Property Name="creationUserID" Type="Int32" />
+    <Property Name="approvalDate" Type="DateTime" Precision="3" />
+    <Property Name="approvalUserID" Type="Int32" />
+    <Property Name="receiveDate" Type="DateTime" Precision="3" />
+    <Property Name="receiveUserID" Type="Int32" />
+    <Property Name="rejectionDate" Type="DateTime" Precision="3" />
+    <Property Name="rejectionUserID" Type="Int32" />
+    <Property Name="rejectionReasonID" Type="Int32" />
+    <Property Name="requestTypeID" Type="Int32" />
+    <Property Name="requestStatusID" Type="Int32" />
+    <Property Name="requestCalssID" Type="Int32" />
+    <Property Name="requestPriorityID" Type="Int32" />
+    <NavigationProperty Name="RejectReason" Relationship="Self.FK_RejectionReasonID_Request" FromRole="Request" ToRole="RejectReason" />
+    <NavigationProperty Name="RequestClass" Relationship="Self.FK_RequestClassID_Request" FromRole="Request" ToRole="RequestClass" />
+    <NavigationProperty Name="RequestPriority" Relationship="Self.FK_RequestPriorityID_Request" FromRole="Request" ToRole="RequestPriority" />
+    <NavigationProperty Name="RequestStatu" Relationship="Self.FK_RequestStatusID_Request" FromRole="Request" ToRole="RequestStatus" />
+    <NavigationProperty Name="RequestType" Relationship="Self.FK_RequestTypeID_Request" FromRole="Request" ToRole="RequestType" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ApprovalUserID_Request" FromRole="Request" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_CreationUserID_Request" FromRole="Request" ToRole="User" />
+    <NavigationProperty Name="User2" Relationship="Self.FK_ReceiveUserID_Request" FromRole="Request" ToRole="User" />
+    <NavigationProperty Name="User3" Relationship="Self.FK_RejectionUserID_Request" FromRole="Request" ToRole="User" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerID_Request" FromRole="Request" ToRole="Customer" />
+    <NavigationProperty Name="RequestDetails" Relationship="Self.FK_RequestID_RequestDetail" FromRole="Request" ToRole="RequestDetail" />
+  </EntityType>
+  <EntityType Name="RequestDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="cardTypeID" Type="Int32" />
+    <Property Name="requestID" Type="Int32" />
+    <NavigationProperty Name="CardType" Relationship="Self.FK_CardTypeID_RequestDetail" FromRole="RequestDetail" ToRole="CardType" />
+    <NavigationProperty Name="Request" Relationship="Self.FK_RequestID_RequestDetail" FromRole="RequestDetail" ToRole="Request" />
+  </EntityType>
+  <Association Name="FK_CardTypeID_RequestDetail">
+    <End Role="CardType" Type="Self.CardType" Multiplicity="0..1" />
+    <End Role="RequestDetail" Type="Self.RequestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestDetail">
+        <PropertyRef Name="cardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FunctionID_GroupFunction">
+    <End Role="Function" Type="Self.Function" Multiplicity="0..1" />
+    <End Role="GroupFunction" Type="Self.GroupFunction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Function">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupFunction">
+        <PropertyRef Name="functionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupID_GroupFunction">
+    <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
+    <End Role="GroupFunction" Type="Self.GroupFunction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupFunction">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupID_UserGroup">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RejectionReasonID_Request">
+    <End Role="RejectReason" Type="Self.RejectReason" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RejectReason">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rejectionReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestClassID_Request">
+    <End Role="RequestClass" Type="Self.RequestClass" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestCalssID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestPriorityID_Request">
+    <End Role="RequestPriority" Type="Self.RequestPriority" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestPriority">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestPriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestStatusID_Request">
+    <End Role="RequestStatus" Type="Self.RequestStatu" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestTypeID_Request">
+    <End Role="RequestType" Type="Self.RequestType" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApprovalUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="approvalUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreationUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="creationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiveUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="receiveUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RejectionUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rejectionUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserID_UserGroup">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkFieldId_Customer">
+    <End Role="WorkField" Type="Self.WorkField" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkField">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="workFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerID_Request">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestID_RequestDetail">
+    <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
+    <End Role="RequestDetail" Type="Self.RequestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestDetail">
+        <PropertyRef Name="requestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SAM_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CardTypes" EntityType="Self.CardType" />
+    <EntitySet Name="CardValidities" EntityType="Self.CardValidity" />
+    <EntitySet Name="Functions" EntityType="Self.Function" />
+    <EntitySet Name="Groups" EntityType="Self.Group" />
+    <EntitySet Name="GroupFunctions" EntityType="Self.GroupFunction" />
+    <EntitySet Name="RejectReasons" EntityType="Self.RejectReason" />
+    <EntitySet Name="RequestClasses" EntityType="Self.RequestClass" />
+    <EntitySet Name="RequestPriorities" EntityType="Self.RequestPriority" />
+    <EntitySet Name="RequestStatus" EntityType="Self.RequestStatu" />
+    <EntitySet Name="RequestTypes" EntityType="Self.RequestType" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+    <EntitySet Name="WorkFields" EntityType="Self.WorkField" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Requests" EntityType="Self.Request" />
+    <EntitySet Name="RequestDetails" EntityType="Self.RequestDetail" />
+    <AssociationSet Name="FK_CardTypeID_RequestDetail" Association="Self.FK_CardTypeID_RequestDetail">
+      <End Role="CardType" EntitySet="CardTypes" />
+      <End Role="RequestDetail" EntitySet="RequestDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FunctionID_GroupFunction" Association="Self.FK_FunctionID_GroupFunction">
+      <End Role="Function" EntitySet="Functions" />
+      <End Role="GroupFunction" EntitySet="GroupFunctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupID_GroupFunction" Association="Self.FK_GroupID_GroupFunction">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="GroupFunction" EntitySet="GroupFunctions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupID_UserGroup" Association="Self.FK_GroupID_UserGroup">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="UserGroup" EntitySet="UserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RejectionReasonID_Request" Association="Self.FK_RejectionReasonID_Request">
+      <End Role="RejectReason" EntitySet="RejectReasons" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestClassID_Request" Association="Self.FK_RequestClassID_Request">
+      <End Role="RequestClass" EntitySet="RequestClasses" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestPriorityID_Request" Association="Self.FK_RequestPriorityID_Request">
+      <End Role="RequestPriority" EntitySet="RequestPriorities" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestStatusID_Request" Association="Self.FK_RequestStatusID_Request">
+      <End Role="RequestStatus" EntitySet="RequestStatus" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestTypeID_Request" Association="Self.FK_RequestTypeID_Request">
+      <End Role="RequestType" EntitySet="RequestTypes" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApprovalUserID_Request" Association="Self.FK_ApprovalUserID_Request">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreationUserID_Request" Association="Self.FK_CreationUserID_Request">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiveUserID_Request" Association="Self.FK_ReceiveUserID_Request">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RejectionUserID_Request" Association="Self.FK_RejectionUserID_Request">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserID_UserGroup" Association="Self.FK_UserID_UserGroup">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserGroup" EntitySet="UserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkFieldId_Customer" Association="Self.FK_WorkFieldId_Customer">
+      <End Role="WorkField" EntitySet="WorkFields" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerID_Request" Association="Self.FK_CustomerID_Request">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Request" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestID_RequestDetail" Association="Self.FK_RequestID_RequestDetail">
+      <End Role="Request" EntitySet="Requests" />
+      <End Role="RequestDetail" EntitySet="RequestDetails" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteCardType">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteCardValidity">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteFunction">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteGroup">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteGroupFunction">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRejectReason">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequestClass">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequestPriority">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequestStatus">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequestType">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteUser">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteUserGroup">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteWorkField">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCardType">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCardValidity">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertFunction">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+      <Parameter Name="route" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertGroup">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertGroupFunction">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="functionId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRejectReason">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequestClass">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequestPriority">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequestStatus">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequestType">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUser">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="createDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUserGroup">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertWorkField">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCardType" ReturnType="Collection(SAM_DBModel.SelectCardType_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCardValidity" ReturnType="Collection(SAM_DBModel.SelectCardValidity_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectFunction" ReturnType="Collection(SAM_DBModel.SelectFunction_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectGroup" ReturnType="Collection(SAM_DBModel.SelectGroup_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectGroupFunction" ReturnType="Collection(SAM_DBModel.SelectGroupFunction_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="functionId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRejectReason" ReturnType="Collection(SAM_DBModel.SelectRejectReason_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequestClass" ReturnType="Collection(SAM_DBModel.SelectRequestClass_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequestPriority" ReturnType="Collection(SAM_DBModel.SelectRequestPriority_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequestStatus" ReturnType="Collection(SAM_DBModel.SelectRequestStatus_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequestType" ReturnType="Collection(SAM_DBModel.SelectRequestType_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectUser" ReturnType="Collection(SAM_DBModel.SelectUser_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="createDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectUserGroup" ReturnType="Collection(SAM_DBModel.SelectUserGroup_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectWorkField" ReturnType="Collection(SAM_DBModel.SelectWorkField_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCardType">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCardValidity">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateFunction">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+      <Parameter Name="route" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateGroup">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateGroupFunction">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="functionId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRejectReason">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequestClass">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequestPriority">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequestStatus">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequestType">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateUser">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="Boolean" />
+      <Parameter Name="createDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateUserGroup">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateWorkField">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteCustomer">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequest">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteRequestDetail">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertCustomer">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="workFieldId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequest">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="requestNumber" Mode="In" Type="String" />
+      <Parameter Name="totalQuantity" Mode="In" Type="Int32" />
+      <Parameter Name="PDD" Mode="In" Type="DateTime" />
+      <Parameter Name="customerID" Mode="In" Type="Int32" />
+      <Parameter Name="creationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="creationUserID" Mode="In" Type="Int32" />
+      <Parameter Name="approvalDate" Mode="In" Type="DateTime" />
+      <Parameter Name="approvalUserID" Mode="In" Type="Int32" />
+      <Parameter Name="receiveDate" Mode="In" Type="DateTime" />
+      <Parameter Name="receiveUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionDate" Mode="In" Type="DateTime" />
+      <Parameter Name="rejectionUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="requestTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="requestCalssID" Mode="In" Type="Int32" />
+      <Parameter Name="requestPriorityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRequestDetail">
+      <Parameter Name="Id" Mode="InOut" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="cardTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCustomer" ReturnType="Collection(SAM_DBModel.SelectCustomer_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+      <Parameter Name="workFieldId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequest" ReturnType="Collection(SAM_DBModel.SelectRequest_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="requestNumber" Mode="In" Type="String" />
+      <Parameter Name="customerID" Mode="In" Type="Int32" />
+      <Parameter Name="creationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="creationUserID" Mode="In" Type="Int32" />
+      <Parameter Name="approvalDate" Mode="In" Type="DateTime" />
+      <Parameter Name="approvalUserID" Mode="In" Type="Int32" />
+      <Parameter Name="receiveDate" Mode="In" Type="DateTime" />
+      <Parameter Name="receiveUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionDate" Mode="In" Type="DateTime" />
+      <Parameter Name="rejectionUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="requestTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="requestCalssID" Mode="In" Type="Int32" />
+      <Parameter Name="requestPriorityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectRequestDetail" ReturnType="Collection(SAM_DBModel.SelectRequestDetail_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="cardTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateCustomer">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="nameAr" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="workFieldId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequest">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="requestNumber" Mode="In" Type="String" />
+      <Parameter Name="totalQuantity" Mode="In" Type="Int32" />
+      <Parameter Name="PDD" Mode="In" Type="DateTime" />
+      <Parameter Name="customerID" Mode="In" Type="Int32" />
+      <Parameter Name="creationDate" Mode="In" Type="DateTime" />
+      <Parameter Name="creationUserID" Mode="In" Type="Int32" />
+      <Parameter Name="approvalDate" Mode="In" Type="DateTime" />
+      <Parameter Name="approvalUserID" Mode="In" Type="Int32" />
+      <Parameter Name="receiveDate" Mode="In" Type="DateTime" />
+      <Parameter Name="receiveUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionDate" Mode="In" Type="DateTime" />
+      <Parameter Name="rejectionUserID" Mode="In" Type="Int32" />
+      <Parameter Name="rejectionReasonID" Mode="In" Type="Int32" />
+      <Parameter Name="requestTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="requestCalssID" Mode="In" Type="Int32" />
+      <Parameter Name="requestPriorityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateRequestDetail">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="cardTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="requestID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SelectCardType_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectCardValidity_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectFunction_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="route" Nullable="true" />
+    <Property Type="Boolean" Name="status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectGroup_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectGroupFunction_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="functionId" Nullable="true" />
+    <Property Type="Int32" Name="groupId" Nullable="true" />
+    <Property Type="Boolean" Name="status" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectRejectReason_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectRequestClass_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectRequestPriority_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectRequestStatus_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectRequestType_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectUser_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="fullName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="30" />
+    <Property Type="Boolean" Name="status" Nullable="true" />
+    <Property Type="DateTime" Name="createDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SelectUserGroup_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="Int32" Name="groupId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectWorkField_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SelectCustomer_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="code" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="nameAr" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="phone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="workFieldId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectRequest_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="requestNumber" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="totalQuantity" Nullable="true" />
+    <Property Type="DateTime" Name="PDD" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="customerID" Nullable="true" />
+    <Property Type="DateTime" Name="creationDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="creationUserID" Nullable="true" />
+    <Property Type="DateTime" Name="approvalDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="approvalUserID" Nullable="true" />
+    <Property Type="DateTime" Name="receiveDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="receiveUserID" Nullable="true" />
+    <Property Type="DateTime" Name="rejectionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="rejectionUserID" Nullable="true" />
+    <Property Type="Int32" Name="rejectionReasonID" Nullable="true" />
+    <Property Type="Int32" Name="requestTypeID" Nullable="true" />
+    <Property Type="Int32" Name="requestStatusID" Nullable="true" />
+    <Property Type="Int32" Name="requestCalssID" Nullable="true" />
+    <Property Type="Int32" Name="requestPriorityID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SelectRequestDetail_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="true" />
+    <Property Type="Int32" Name="cardTypeID" Nullable="true" />
+    <Property Type="Int32" Name="requestID" Nullable="true" />
+  </ComplexType>
+</Schema>

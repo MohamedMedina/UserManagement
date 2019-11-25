@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SAM_DBModelStoreContainer" CdmEntityContainer="SAM_DBEntities">
+    <EntitySetMapping Name="CardTypes">
+      <EntityTypeMapping TypeName="SAM_DBModel.CardType">
+        <MappingFragment StoreEntitySet="CardType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardValidities">
+      <EntityTypeMapping TypeName="SAM_DBModel.CardValidity">
+        <MappingFragment StoreEntitySet="CardValidity">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Functions">
+      <EntityTypeMapping TypeName="SAM_DBModel.Function">
+        <MappingFragment StoreEntitySet="Function">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="SAM_DBModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupFunctions">
+      <EntityTypeMapping TypeName="SAM_DBModel.GroupFunction">
+        <MappingFragment StoreEntitySet="GroupFunction">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="functionId" ColumnName="functionId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RejectReasons">
+      <EntityTypeMapping TypeName="SAM_DBModel.RejectReason">
+        <MappingFragment StoreEntitySet="RejectReason">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestClasses">
+      <EntityTypeMapping TypeName="SAM_DBModel.RequestClass">
+        <MappingFragment StoreEntitySet="RequestClass">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestPriorities">
+      <EntityTypeMapping TypeName="SAM_DBModel.RequestPriority">
+        <MappingFragment StoreEntitySet="RequestPriority">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestStatus">
+      <EntityTypeMapping TypeName="SAM_DBModel.RequestStatu">
+        <MappingFragment StoreEntitySet="RequestStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestTypes">
+      <EntityTypeMapping TypeName="SAM_DBModel.RequestType">
+        <MappingFragment StoreEntitySet="RequestType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SAM_DBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="SAM_DBModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkFields">
+      <EntityTypeMapping TypeName="SAM_DBModel.WorkField">
+        <MappingFragment StoreEntitySet="WorkField">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="SAM_DBModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="workFieldId" ColumnName="workFieldId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="SAM_DBModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="requestNumber" ColumnName="requestNumber" />
+          <ScalarProperty Name="totalQuantity" ColumnName="totalQuantity" />
+          <ScalarProperty Name="PDD" ColumnName="PDD" />
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="creationUserID" ColumnName="creationUserID" />
+          <ScalarProperty Name="approvalDate" ColumnName="approvalDate" />
+          <ScalarProperty Name="approvalUserID" ColumnName="approvalUserID" />
+          <ScalarProperty Name="receiveDate" ColumnName="receiveDate" />
+          <ScalarProperty Name="receiveUserID" ColumnName="receiveUserID" />
+          <ScalarProperty Name="rejectionDate" ColumnName="rejectionDate" />
+          <ScalarProperty Name="rejectionUserID" ColumnName="rejectionUserID" />
+          <ScalarProperty Name="rejectionReasonID" ColumnName="rejectionReasonID" />
+          <ScalarProperty Name="requestTypeID" ColumnName="requestTypeID" />
+          <ScalarProperty Name="requestStatusID" ColumnName="requestStatusID" />
+          <ScalarProperty Name="requestCalssID" ColumnName="requestCalssID" />
+          <ScalarProperty Name="requestPriorityID" ColumnName="requestPriorityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestDetails">
+      <EntityTypeMapping TypeName="SAM_DBModel.RequestDetail">
+        <MappingFragment StoreEntitySet="RequestDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="cardTypeID" ColumnName="cardTypeID" />
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteCardType" FunctionName="SAM_DBModel.Store.DeleteCardType" />
+    <FunctionImportMapping FunctionImportName="DeleteCardValidity" FunctionName="SAM_DBModel.Store.DeleteCardValidity" />
+    <FunctionImportMapping FunctionImportName="DeleteFunction" FunctionName="SAM_DBModel.Store.DeleteFunction" />
+    <FunctionImportMapping FunctionImportName="DeleteGroup" FunctionName="SAM_DBModel.Store.DeleteGroup" />
+    <FunctionImportMapping FunctionImportName="DeleteGroupFunction" FunctionName="SAM_DBModel.Store.DeleteGroupFunction" />
+    <FunctionImportMapping FunctionImportName="DeleteRejectReason" FunctionName="SAM_DBModel.Store.DeleteRejectReason" />
+    <FunctionImportMapping FunctionImportName="DeleteRequestClass" FunctionName="SAM_DBModel.Store.DeleteRequestClass" />
+    <FunctionImportMapping FunctionImportName="DeleteRequestPriority" FunctionName="SAM_DBModel.Store.DeleteRequestPriority" />
+    <FunctionImportMapping FunctionImportName="DeleteRequestStatus" FunctionName="SAM_DBModel.Store.DeleteRequestStatus" />
+    <FunctionImportMapping FunctionImportName="DeleteRequestType" FunctionName="SAM_DBModel.Store.DeleteRequestType" />
+    <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="SAM_DBModel.Store.DeleteUser" />
+    <FunctionImportMapping FunctionImportName="DeleteUserGroup" FunctionName="SAM_DBModel.Store.DeleteUserGroup" />
+    <FunctionImportMapping FunctionImportName="DeleteWorkField" FunctionName="SAM_DBModel.Store.DeleteWorkField" />
+    <FunctionImportMapping FunctionImportName="InsertCardType" FunctionName="SAM_DBModel.Store.InsertCardType" />
+    <FunctionImportMapping FunctionImportName="InsertCardValidity" FunctionName="SAM_DBModel.Store.InsertCardValidity" />
+    <FunctionImportMapping FunctionImportName="InsertFunction" FunctionName="SAM_DBModel.Store.InsertFunction" />
+    <FunctionImportMapping FunctionImportName="InsertGroup" FunctionName="SAM_DBModel.Store.InsertGroup" />
+    <FunctionImportMapping FunctionImportName="InsertGroupFunction" FunctionName="SAM_DBModel.Store.InsertGroupFunction" />
+    <FunctionImportMapping FunctionImportName="InsertRejectReason" FunctionName="SAM_DBModel.Store.InsertRejectReason" />
+    <FunctionImportMapping FunctionImportName="InsertRequestClass" FunctionName="SAM_DBModel.Store.InsertRequestClass" />
+    <FunctionImportMapping FunctionImportName="InsertRequestPriority" FunctionName="SAM_DBModel.Store.InsertRequestPriority" />
+    <FunctionImportMapping FunctionImportName="InsertRequestStatus" FunctionName="SAM_DBModel.Store.InsertRequestStatus" />
+    <FunctionImportMapping FunctionImportName="InsertRequestType" FunctionName="SAM_DBModel.Store.InsertRequestType" />
+    <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="SAM_DBModel.Store.InsertUser" />
+    <FunctionImportMapping FunctionImportName="InsertUserGroup" FunctionName="SAM_DBModel.Store.InsertUserGroup" />
+    <FunctionImportMapping FunctionImportName="InsertWorkField" FunctionName="SAM_DBModel.Store.InsertWorkField" />
+    <FunctionImportMapping FunctionImportName="SelectCardType" FunctionName="SAM_DBModel.Store.SelectCardType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectCardType_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectCardValidity" FunctionName="SAM_DBModel.Store.SelectCardValidity">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectCardValidity_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectFunction" FunctionName="SAM_DBModel.Store.SelectFunction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectFunction_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectGroup" FunctionName="SAM_DBModel.Store.SelectGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectGroup_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectGroupFunction" FunctionName="SAM_DBModel.Store.SelectGroupFunction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectGroupFunction_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="functionId" ColumnName="functionId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRejectReason" FunctionName="SAM_DBModel.Store.SelectRejectReason">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRejectReason_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequestClass" FunctionName="SAM_DBModel.Store.SelectRequestClass">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequestClass_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequestPriority" FunctionName="SAM_DBModel.Store.SelectRequestPriority">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequestPriority_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequestStatus" FunctionName="SAM_DBModel.Store.SelectRequestStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequestStatus_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequestType" FunctionName="SAM_DBModel.Store.SelectRequestType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequestType_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectUser" FunctionName="SAM_DBModel.Store.SelectUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectUser_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="createDate" ColumnName="createDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectUserGroup" FunctionName="SAM_DBModel.Store.SelectUserGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectUserGroup_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="groupId" ColumnName="groupId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectWorkField" FunctionName="SAM_DBModel.Store.SelectWorkField">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectWorkField_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateCardType" FunctionName="SAM_DBModel.Store.UpdateCardType" />
+    <FunctionImportMapping FunctionImportName="UpdateCardValidity" FunctionName="SAM_DBModel.Store.UpdateCardValidity" />
+    <FunctionImportMapping FunctionImportName="UpdateFunction" FunctionName="SAM_DBModel.Store.UpdateFunction" />
+    <FunctionImportMapping FunctionImportName="UpdateGroup" FunctionName="SAM_DBModel.Store.UpdateGroup" />
+    <FunctionImportMapping FunctionImportName="UpdateGroupFunction" FunctionName="SAM_DBModel.Store.UpdateGroupFunction" />
+    <FunctionImportMapping FunctionImportName="UpdateRejectReason" FunctionName="SAM_DBModel.Store.UpdateRejectReason" />
+    <FunctionImportMapping FunctionImportName="UpdateRequestClass" FunctionName="SAM_DBModel.Store.UpdateRequestClass" />
+    <FunctionImportMapping FunctionImportName="UpdateRequestPriority" FunctionName="SAM_DBModel.Store.UpdateRequestPriority" />
+    <FunctionImportMapping FunctionImportName="UpdateRequestStatus" FunctionName="SAM_DBModel.Store.UpdateRequestStatus" />
+    <FunctionImportMapping FunctionImportName="UpdateRequestType" FunctionName="SAM_DBModel.Store.UpdateRequestType" />
+    <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="SAM_DBModel.Store.UpdateUser" />
+    <FunctionImportMapping FunctionImportName="UpdateUserGroup" FunctionName="SAM_DBModel.Store.UpdateUserGroup" />
+    <FunctionImportMapping FunctionImportName="UpdateWorkField" FunctionName="SAM_DBModel.Store.UpdateWorkField" />
+    <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="SAM_DBModel.Store.DeleteCustomer" />
+    <FunctionImportMapping FunctionImportName="DeleteRequest" FunctionName="SAM_DBModel.Store.DeleteRequest" />
+    <FunctionImportMapping FunctionImportName="DeleteRequestDetail" FunctionName="SAM_DBModel.Store.DeleteRequestDetail" />
+    <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="SAM_DBModel.Store.InsertCustomer" />
+    <FunctionImportMapping FunctionImportName="InsertRequest" FunctionName="SAM_DBModel.Store.InsertRequest" />
+    <FunctionImportMapping FunctionImportName="InsertRequestDetail" FunctionName="SAM_DBModel.Store.InsertRequestDetail" />
+    <FunctionImportMapping FunctionImportName="SelectCustomer" FunctionName="SAM_DBModel.Store.SelectCustomer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectCustomer_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="nameAr" ColumnName="nameAr" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="workFieldId" ColumnName="workFieldId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequest" FunctionName="SAM_DBModel.Store.SelectRequest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequest_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="requestNumber" ColumnName="requestNumber" />
+          <ScalarProperty Name="totalQuantity" ColumnName="totalQuantity" />
+          <ScalarProperty Name="PDD" ColumnName="PDD" />
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="creationUserID" ColumnName="creationUserID" />
+          <ScalarProperty Name="approvalDate" ColumnName="approvalDate" />
+          <ScalarProperty Name="approvalUserID" ColumnName="approvalUserID" />
+          <ScalarProperty Name="receiveDate" ColumnName="receiveDate" />
+          <ScalarProperty Name="receiveUserID" ColumnName="receiveUserID" />
+          <ScalarProperty Name="rejectionDate" ColumnName="rejectionDate" />
+          <ScalarProperty Name="rejectionUserID" ColumnName="rejectionUserID" />
+          <ScalarProperty Name="rejectionReasonID" ColumnName="rejectionReasonID" />
+          <ScalarProperty Name="requestTypeID" ColumnName="requestTypeID" />
+          <ScalarProperty Name="requestStatusID" ColumnName="requestStatusID" />
+          <ScalarProperty Name="requestCalssID" ColumnName="requestCalssID" />
+          <ScalarProperty Name="requestPriorityID" ColumnName="requestPriorityID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectRequestDetail" FunctionName="SAM_DBModel.Store.SelectRequestDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SAM_DBModel.SelectRequestDetail_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="cardTypeID" ColumnName="cardTypeID" />
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateCustomer" FunctionName="SAM_DBModel.Store.UpdateCustomer" />
+    <FunctionImportMapping FunctionImportName="UpdateRequest" FunctionName="SAM_DBModel.Store.UpdateRequest" />
+    <FunctionImportMapping FunctionImportName="UpdateRequestDetail" FunctionName="SAM_DBModel.Store.UpdateRequestDetail" />
+  </EntityContainerMapping>
+</Mapping>

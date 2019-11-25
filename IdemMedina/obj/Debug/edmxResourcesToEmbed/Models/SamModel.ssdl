@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SAM_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CardType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="CardValidity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Function">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+    <Property Name="route" Type="nvarchar(max)" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="GroupFunction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="functionId" Type="int" />
+    <Property Name="groupId" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="RejectReason">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="RequestClass">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="RequestPriority">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="RequestStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="RequestType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="fullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="status" Type="bit" />
+    <Property Name="createDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="groupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkField">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="30" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="30" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="nameAr" Type="nvarchar" MaxLength="100" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="workFieldId" Type="int" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="requestNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="totalQuantity" Type="int" />
+    <Property Name="PDD" Type="datetime" />
+    <Property Name="customerID" Type="int" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="creationUserID" Type="int" />
+    <Property Name="approvalDate" Type="datetime" />
+    <Property Name="approvalUserID" Type="int" />
+    <Property Name="receiveDate" Type="datetime" />
+    <Property Name="receiveUserID" Type="int" />
+    <Property Name="rejectionDate" Type="datetime" />
+    <Property Name="rejectionUserID" Type="int" />
+    <Property Name="rejectionReasonID" Type="int" />
+    <Property Name="requestTypeID" Type="int" />
+    <Property Name="requestStatusID" Type="int" />
+    <Property Name="requestCalssID" Type="int" />
+    <Property Name="requestPriorityID" Type="int" />
+  </EntityType>
+  <EntityType Name="RequestDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="cardTypeID" Type="int" />
+    <Property Name="requestID" Type="int" />
+  </EntityType>
+  <Association Name="FK_ApprovalUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="approvalUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CardTypeID_RequestDetail">
+    <End Role="CardType" Type="Self.CardType" Multiplicity="0..1" />
+    <End Role="RequestDetail" Type="Self.RequestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestDetail">
+        <PropertyRef Name="cardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreationUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="creationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerID_Request">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FunctionID_GroupFunction">
+    <End Role="Function" Type="Self.Function" Multiplicity="0..1" />
+    <End Role="GroupFunction" Type="Self.GroupFunction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Function">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupFunction">
+        <PropertyRef Name="functionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupID_GroupFunction">
+    <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
+    <End Role="GroupFunction" Type="Self.GroupFunction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GroupFunction">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupID_UserGroup">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="groupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiveUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="receiveUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RejectionReasonID_Request">
+    <End Role="RejectReason" Type="Self.RejectReason" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RejectReason">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rejectionReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RejectionUserID_Request">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="rejectionUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestClassID_Request">
+    <End Role="RequestClass" Type="Self.RequestClass" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestClass">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestCalssID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestID_RequestDetail">
+    <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
+    <End Role="RequestDetail" Type="Self.RequestDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RequestDetail">
+        <PropertyRef Name="requestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestPriorityID_Request">
+    <End Role="RequestPriority" Type="Self.RequestPriority" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestPriority">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestPriorityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestStatusID_Request">
+    <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RequestTypeID_Request">
+    <End Role="RequestType" Type="Self.RequestType" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="requestTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserID_UserGroup">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkFieldId_Customer">
+    <End Role="WorkField" Type="Self.WorkField" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkField">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="workFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DeleteCardType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteCardValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteGroupFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRejectReason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequestClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequestPriority" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequestStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequestType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteWorkField" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertCardType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertCardValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+    <Parameter Name="route" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertGroupFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="functionId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="InsertRejectReason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertRequestClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertRequestPriority" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertRequestStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertRequestType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="createDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="InsertUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertWorkField" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectCardType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectCardValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectGroupFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="functionId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectRejectReason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectRequestClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectRequestPriority" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectRequestStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectRequestType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="createDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SelectUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectWorkField" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateCardType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateCardValidity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+    <Parameter Name="route" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateGroupFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="functionId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateRejectReason" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequestClass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequestPriority" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequestStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequestType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="status" Type="bit" Mode="In" />
+    <Parameter Name="createDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UpdateUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateWorkField" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Lookups">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="code" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="workFieldId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="requestNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="totalQuantity" Type="int" Mode="In" />
+    <Parameter Name="PDD" Type="datetime" Mode="In" />
+    <Parameter Name="customerID" Type="int" Mode="In" />
+    <Parameter Name="creationDate" Type="datetime" Mode="In" />
+    <Parameter Name="creationUserID" Type="int" Mode="In" />
+    <Parameter Name="approvalDate" Type="datetime" Mode="In" />
+    <Parameter Name="approvalUserID" Type="int" Mode="In" />
+    <Parameter Name="receiveDate" Type="datetime" Mode="In" />
+    <Parameter Name="receiveUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionDate" Type="datetime" Mode="In" />
+    <Parameter Name="rejectionUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionReasonID" Type="int" Mode="In" />
+    <Parameter Name="requestTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestStatusID" Type="int" Mode="In" />
+    <Parameter Name="requestCalssID" Type="int" Mode="In" />
+    <Parameter Name="requestPriorityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="cardTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="code" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+    <Parameter Name="workFieldId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="requestNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="customerID" Type="int" Mode="In" />
+    <Parameter Name="creationDate" Type="datetime" Mode="In" />
+    <Parameter Name="creationUserID" Type="int" Mode="In" />
+    <Parameter Name="approvalDate" Type="datetime" Mode="In" />
+    <Parameter Name="approvalUserID" Type="int" Mode="In" />
+    <Parameter Name="receiveDate" Type="datetime" Mode="In" />
+    <Parameter Name="receiveUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionDate" Type="datetime" Mode="In" />
+    <Parameter Name="rejectionUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionReasonID" Type="int" Mode="In" />
+    <Parameter Name="requestTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestStatusID" Type="int" Mode="In" />
+    <Parameter Name="requestCalssID" Type="int" Mode="In" />
+    <Parameter Name="requestPriorityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="cardTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="code" Type="nvarchar" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameAr" Type="nvarchar" Mode="In" />
+    <Parameter Name="address" Type="nvarchar" Mode="In" />
+    <Parameter Name="phone" Type="nvarchar" Mode="In" />
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="workFieldId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="requestNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="totalQuantity" Type="int" Mode="In" />
+    <Parameter Name="PDD" Type="datetime" Mode="In" />
+    <Parameter Name="customerID" Type="int" Mode="In" />
+    <Parameter Name="creationDate" Type="datetime" Mode="In" />
+    <Parameter Name="creationUserID" Type="int" Mode="In" />
+    <Parameter Name="approvalDate" Type="datetime" Mode="In" />
+    <Parameter Name="approvalUserID" Type="int" Mode="In" />
+    <Parameter Name="receiveDate" Type="datetime" Mode="In" />
+    <Parameter Name="receiveUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionDate" Type="datetime" Mode="In" />
+    <Parameter Name="rejectionUserID" Type="int" Mode="In" />
+    <Parameter Name="rejectionReasonID" Type="int" Mode="In" />
+    <Parameter Name="requestTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestStatusID" Type="int" Mode="In" />
+    <Parameter Name="requestCalssID" Type="int" Mode="In" />
+    <Parameter Name="requestPriorityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Transactions">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="cardTypeID" Type="int" Mode="In" />
+    <Parameter Name="requestID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="SAM_DBModelStoreContainer">
+    <EntitySet Name="CardType" EntityType="Self.CardType" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="CardValidity" EntityType="Self.CardValidity" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="Function" EntityType="Self.Function" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="Group" EntityType="Self.Group" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="GroupFunction" EntityType="Self.GroupFunction" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="RejectReason" EntityType="Self.RejectReason" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="RequestClass" EntityType="Self.RequestClass" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="RequestPriority" EntityType="Self.RequestPriority" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="RequestType" EntityType="Self.RequestType" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="WorkField" EntityType="Self.WorkField" Schema="Lookups" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="Transactions" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="Transactions" store:Type="Tables" />
+    <EntitySet Name="RequestDetail" EntityType="Self.RequestDetail" Schema="Transactions" store:Type="Tables" />
+    <AssociationSet Name="FK_ApprovalUserID_Request" Association="Self.FK_ApprovalUserID_Request">
+      <End Role="User" EntitySet="User" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CardTypeID_RequestDetail" Association="Self.FK_CardTypeID_RequestDetail">
+      <End Role="CardType" EntitySet="CardType" />
+      <End Role="RequestDetail" EntitySet="RequestDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreationUserID_Request" Association="Self.FK_CreationUserID_Request">
+      <End Role="User" EntitySet="User" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerID_Request" Association="Self.FK_CustomerID_Request">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FunctionID_GroupFunction" Association="Self.FK_FunctionID_GroupFunction">
+      <End Role="Function" EntitySet="Function" />
+      <End Role="GroupFunction" EntitySet="GroupFunction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupID_GroupFunction" Association="Self.FK_GroupID_GroupFunction">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="GroupFunction" EntitySet="GroupFunction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupID_UserGroup" Association="Self.FK_GroupID_UserGroup">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="UserGroup" EntitySet="UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiveUserID_Request" Association="Self.FK_ReceiveUserID_Request">
+      <End Role="User" EntitySet="User" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RejectionReasonID_Request" Association="Self.FK_RejectionReasonID_Request">
+      <End Role="RejectReason" EntitySet="RejectReason" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RejectionUserID_Request" Association="Self.FK_RejectionUserID_Request">
+      <End Role="User" EntitySet="User" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestClassID_Request" Association="Self.FK_RequestClassID_Request">
+      <End Role="RequestClass" EntitySet="RequestClass" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestID_RequestDetail" Association="Self.FK_RequestID_RequestDetail">
+      <End Role="Request" EntitySet="Request" />
+      <End Role="RequestDetail" EntitySet="RequestDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestPriorityID_Request" Association="Self.FK_RequestPriorityID_Request">
+      <End Role="RequestPriority" EntitySet="RequestPriority" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestStatusID_Request" Association="Self.FK_RequestStatusID_Request">
+      <End Role="RequestStatus" EntitySet="RequestStatus" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RequestTypeID_Request" Association="Self.FK_RequestTypeID_Request">
+      <End Role="RequestType" EntitySet="RequestType" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserID_UserGroup" Association="Self.FK_UserID_UserGroup">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserGroup" EntitySet="UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkFieldId_Customer" Association="Self.FK_WorkFieldId_Customer">
+      <End Role="WorkField" EntitySet="WorkField" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

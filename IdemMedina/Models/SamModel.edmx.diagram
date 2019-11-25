@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="201ed9fd04fc4e5eaa747ddaf2762902" Name="Diagram1">
+        <EntityTypeShape EntityType="SAM_DBModel.CardType" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.CardValidity" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.Function" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.Group" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.GroupFunction" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RejectReason" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RequestClass" Width="1.5" PointX="3.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RequestPriority" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RequestStatu" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RequestType" Width="1.5" PointX="3.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.User" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.UserGroup" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.WorkField" Width="1.5" PointX="1.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.Customer" Width="1.5" PointX="3.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.Request" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAM_DBModel.RequestDetail" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="SAM_DBModel.FK_CardTypeID_RequestDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_FunctionID_GroupFunction" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_GroupID_GroupFunction" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_GroupID_UserGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RejectionReasonID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RequestClassID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RequestPriorityID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RequestStatusID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RequestTypeID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_ApprovalUserID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_CreationUserID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_ReceiveUserID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RejectionUserID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_UserID_UserGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_WorkFieldId_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_CustomerID_Request" ManuallyRouted="false" />
+        <AssociationConnector Association="SAM_DBModel.FK_RequestID_RequestDetail" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
